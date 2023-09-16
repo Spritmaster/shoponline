@@ -5,20 +5,20 @@ import NavLinks from './Navlinks'
 import { useState, useEffect } from "react";
 
 const themes = {
-  autumn: 'light',
-  halloween: 'dark'
+  light: 'light',
+  dark: 'dark'
 }
 
 const getThemeFromLocalStorage  = () => {
-  return localStorage.getItem('theme' || themes.halloween)
+  return localStorage.getItem('theme' || themes.light)
 }
 
 
 function Navbar() {
   const [theme, setTheme] = useState(getThemeFromLocalStorage())
   const handleTheme = () => {
-    const {autumn, halloween} = themes
-    const newTheme = theme === halloween ? autumn : halloween
+    const {dark, light} = themes
+    const newTheme = theme === light ? dark : light
     document.documentElement.setAttribute('data-theme', theme)
     setTheme(newTheme)
   }
